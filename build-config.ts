@@ -9,6 +9,6 @@ const config = readFileSync(join(__dirname, `src/config/${env}.config.json`));
 writeFileSync(join(__dirname, 'src/config/config.json'), config);
 
 const app = JSON.parse(readFileSync(join(__dirname, 'app.dist.json')));
-app.name = isProd ? 'seedrnts' : `${env} seedrnts`;
-app.displayNamr = isProd ? 'Seed RN Typescript' : `${env} Seed RN Typescript`;
+// app.name = isProd ? 'seedrnts' : `${env} seedrnts`;
+// app.displayName = isProd ? 'Seed RN Typescript' : `${env} Seed RN Typescript`;
 writeFileSync(join(__dirname, 'app.json'), JSON.stringify(app, null, 2));
