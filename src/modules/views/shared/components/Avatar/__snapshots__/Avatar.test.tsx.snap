@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar should render 1`] = `
+<Image
+  source={
+    Object {
+      "uri": "https://avatar.jpg",
+    }
+  }
+  style={
+    Object {
+      "borderRadius": 4,
+      "height": 36,
+      "marginRight": 10,
+      "width": 36,
+    }
+  }
+/>
+`;

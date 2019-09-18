@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link should render 1`] = `
+<View
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#5BC9EB",
+        "fontSize": 15,
+        "fontWeight": "600",
+        "letterSpacing": 0.25,
+        "lineHeight": 15,
+        "textDecorationLine": "underline",
+      }
+    }
+  >
+    https://url.jpg
+  </Text>
+</View>
+`;
+
+exports[`Link should render with text 1`] = `
+<View
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#5BC9EB",
+        "fontSize": 15,
+        "fontWeight": "600",
+        "letterSpacing": 0.25,
+        "lineHeight": 15,
+        "textDecorationLine": "underline",
+      }
+    }
+  >
+    This is a Link
+  </Text>
+</View>
+`;

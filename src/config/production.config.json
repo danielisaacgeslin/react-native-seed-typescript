@@ -1,0 +1,7 @@
+{
+  "ENV": "production",
+  "API_URL": "https://prod-server/service",
+  "API_RETRY_TIMEOUT": 1000,
+  "CHECK_FOR_UPDATES_INTERVAL": 600000,
+  "STORAGE_TIMEOUT": 6000
+}

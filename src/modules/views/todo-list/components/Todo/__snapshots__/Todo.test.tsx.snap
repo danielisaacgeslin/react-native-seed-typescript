@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should render 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": 5,
+      "marginTop": 5,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#1745D5",
+        "fontSize": 19,
+      }
+    }
+  >
+    I AM A TODO
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontSize": 15,
+      }
+    }
+  >
+    i am a todo description
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontSize": 13,
+      }
+    }
+  >
+    created at: 
+    2018-05-11
+  </Text>
+</View>
+`;

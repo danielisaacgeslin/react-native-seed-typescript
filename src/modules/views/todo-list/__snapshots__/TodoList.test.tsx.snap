@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoList should render 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#F6F6F6",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <Text>
+      this is an infinite scroll, please scroll down :)
+    </Text>
+    <RCTScrollView
+      data={
+        Array [
+          Object {
+            "_id": "9164e4c4-9164e4c4-6521-47bb-6521x-97fd",
+            "createdAt": "2018-05-13",
+            "createdById": "9164e4c4-6521-47bb-97fd-c75ac02b2cf5",
+            "description": "i am a todo description 3",
+            "status": "pending",
+            "title": "i am a todo 3",
+            "updatedAt": "2018-08-27",
+          },
+          Object {
+            "_id": "6521x-9164e4c4-6521-97fd-9164e4c4-47bb",
+            "createdAt": "2018-05-11",
+            "createdById": "9164e4c4-6521-47bb-97fd-c75ac02b2cf5",
+            "description": "i am a todo description",
+            "status": "pending",
+            "title": "i am a todo",
+            "updatedAt": "2018-08-27",
+          },
+          Object {
+            "_id": "9164e4c4-6521x-6521-97fd-47bb-9164e4c4",
+            "createdAt": "2018-05-10",
+            "createdById": "9164e4c4-6521-47bb-97fd-c75ac02b2cf5",
+            "description": "i am a todo description 3",
+            "status": "pending",
+            "title": "i am a todo 3",
+            "updatedAt": "2018-08-27",
+          },
+        ]
+      }
+      disableVirtualization={false}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      numColumns={1}
+      onContentSizeChange={[Function]}
+      onEndReached={[Function]}
+      onEndReachedThreshold={0.5}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "marginBottom": 5,
+                "marginTop": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#1745D5",
+                  "fontSize": 19,
+                }
+              }
+            >
+              I AM A TODO 3
+            </Text>
+            <Text
+              style={
+                Object {
+                  "fontSize": 15,
+                }
+              }
+            >
+              i am a todo description 3
+            </Text>
+            <Text
+              style={
+                Object {
+                  "fontSize": 13,
+                }
+              }
+            >
+              created at: 
+              2018-05-13
+            </Text>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "marginBottom": 5,
+                "marginTop": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#1745D5",
+                  "fontSize": 19,
+                }
+              }
+            >
+              I AM A TODO
+            </Text>
+            <Text
+              style={
+                Object {
+                  "fontSize": 15,
+                }
+              }
+            >
+              i am a todo description
+            </Text>
+            <Text
+              style={
+                Object {
+                  "fontSize": 13,
+                }
+              }
+            >
+              created at: 
+              2018-05-11
+            </Text>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "marginBottom": 5,
+                "marginTop": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#1745D5",
+                  "fontSize": 19,
+                }
+              }
+            >
+              I AM A TODO 3
+            </Text>
+            <Text
+              style={
+                Object {
+                  "fontSize": 15,
+                }
+              }
+            >
+              i am a todo description 3
+            </Text>
+            <Text
+              style={
+                Object {
+                  "fontSize": 13,
+                }
+              }
+            >
+              created at: 
+              2018-05-10
+            </Text>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;

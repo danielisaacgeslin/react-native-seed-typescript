@@ -1,0 +1,610 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should render 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "justifyContent": "flex-start",
+      "paddingBottom": 20,
+    }
+  }
+>
+  <View
+    onLayout={[Function]}
+    style={
+      Array [
+        Object {
+          "paddingHorizontal": 20,
+        },
+        Object {
+          "paddingBottom": 0,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#1745D5",
+          "fontSize": 23,
+          "fontWeight": "600",
+          "marginBottom": 8,
+          "marginTop": 16,
+          "textAlign": "left",
+        }
+      }
+    >
+      React Native Seed
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#9FA7BC",
+          "fontSize": 17,
+          "fontWeight": "400",
+          "letterSpacing": 0.2,
+          "marginBottom": 30,
+        }
+      }
+    >
+      Please login to your account
+    </Text>
+    <View
+      style={
+        Object {
+          "marginBottom": 32,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#9FA7BC",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "marginBottom": 10,
+          }
+        }
+      >
+        EMAIL:
+      </Text>
+      <TextInput
+        allowFontScaling={true}
+        keyboardType="email-address"
+        onChangeText={[Function]}
+        placeholder="Enter your email..."
+        placeholderTextColor="#D5DEF1"
+        rejectResponderTermination={true}
+        style={
+          Array [
+            Object {
+              "borderColor": "#D5DEF1",
+              "borderRadius": 4,
+              "borderWidth": 1,
+              "color": "#646565",
+              "fontSize": 15,
+              "fontWeight": "400",
+              "padding": 16,
+            },
+            false,
+          ]
+        }
+        testID="email-input"
+        underlineColorAndroid="rgba(0, 0, 0, 0)"
+        value="fake@email.com"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 32,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#9FA7BC",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "marginBottom": 10,
+          }
+        }
+      >
+        PASSWORD
+      </Text>
+      <TextInput
+        allowFontScaling={true}
+        onChangeText={[Function]}
+        placeholder="Enter your password..."
+        placeholderTextColor="#D5DEF1"
+        rejectResponderTermination={true}
+        secureTextEntry={true}
+        style={
+          Array [
+            Object {
+              "borderColor": "#D5DEF1",
+              "borderRadius": 4,
+              "borderWidth": 1,
+              "color": "#646565",
+              "fontSize": 15,
+              "fontWeight": "400",
+              "padding": 16,
+            },
+            false,
+          ]
+        }
+        testID="password-input"
+        underlineColorAndroid="rgba(0, 0, 0, 0)"
+        value="password"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "borderRadius": 3,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+        testID="login-button"
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#2089dc",
+              "borderColor": "#2089dc",
+              "borderRadius": 3,
+              "borderWidth": 0,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "padding": 8,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "white",
+                "fontSize": 18,
+                "paddingBottom": 1,
+                "paddingTop": 2,
+                "textAlign": "center",
+              }
+            }
+          >
+            Login
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Login should render on Android 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "justifyContent": "flex-start",
+      "paddingBottom": 20,
+    }
+  }
+>
+  <View
+    onLayout={[Function]}
+    style={
+      Array [
+        Object {
+          "paddingHorizontal": 20,
+        },
+        Object {
+          "paddingBottom": 0,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#1745D5",
+          "fontSize": 23,
+          "fontWeight": "600",
+          "marginBottom": 8,
+          "marginTop": 16,
+          "textAlign": "left",
+        }
+      }
+    >
+      React Native Seed
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#9FA7BC",
+          "fontSize": 17,
+          "fontWeight": "400",
+          "letterSpacing": 0.2,
+          "marginBottom": 30,
+        }
+      }
+    >
+      Please login to your account
+    </Text>
+    <View
+      style={
+        Object {
+          "marginBottom": 32,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#9FA7BC",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "marginBottom": 10,
+          }
+        }
+      >
+        EMAIL:
+      </Text>
+      <TextInput
+        allowFontScaling={true}
+        keyboardType="email-address"
+        onChangeText={[Function]}
+        placeholder="Enter your email..."
+        placeholderTextColor="#D5DEF1"
+        rejectResponderTermination={true}
+        style={
+          Array [
+            Object {
+              "borderColor": "#D5DEF1",
+              "borderRadius": 4,
+              "borderWidth": 1,
+              "color": "#646565",
+              "fontSize": 15,
+              "fontWeight": "400",
+              "padding": 16,
+            },
+            false,
+          ]
+        }
+        testID="email-input"
+        underlineColorAndroid="rgba(0, 0, 0, 0)"
+        value="fake@email.com"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 32,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#9FA7BC",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "marginBottom": 10,
+          }
+        }
+      >
+        PASSWORD
+      </Text>
+      <TextInput
+        allowFontScaling={true}
+        onChangeText={[Function]}
+        placeholder="Enter your password..."
+        placeholderTextColor="#D5DEF1"
+        rejectResponderTermination={true}
+        secureTextEntry={true}
+        style={
+          Array [
+            Object {
+              "borderColor": "#D5DEF1",
+              "borderRadius": 4,
+              "borderWidth": 1,
+              "color": "#646565",
+              "fontSize": 15,
+              "fontWeight": "400",
+              "padding": 16,
+            },
+            false,
+          ]
+        }
+        testID="password-input"
+        underlineColorAndroid="rgba(0, 0, 0, 0)"
+        value="password"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "borderRadius": 3,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+        testID="login-button"
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#2089dc",
+              "borderColor": "#2089dc",
+              "borderRadius": 3,
+              "borderWidth": 0,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "padding": 8,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "white",
+                "fontSize": 18,
+                "paddingBottom": 1,
+                "paddingTop": 2,
+                "textAlign": "center",
+              }
+            }
+          >
+            Login
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Login should render with errors 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "justifyContent": "flex-start",
+      "paddingBottom": 20,
+    }
+  }
+>
+  <View
+    onLayout={[Function]}
+    style={
+      Array [
+        Object {
+          "paddingHorizontal": 20,
+        },
+        Object {
+          "paddingBottom": 0,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#C21E5D",
+          "fontSize": 13,
+          "fontWeight": "400",
+          "marginTop": 8,
+        }
+      }
+    >
+      Oops! Invalid email or password
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#1745D5",
+          "fontSize": 23,
+          "fontWeight": "600",
+          "marginBottom": 8,
+          "marginTop": 16,
+          "textAlign": "left",
+        }
+      }
+    >
+      React Native Seed
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#9FA7BC",
+          "fontSize": 17,
+          "fontWeight": "400",
+          "letterSpacing": 0.2,
+          "marginBottom": 30,
+        }
+      }
+    >
+      Please login to your account
+    </Text>
+    <View
+      style={
+        Object {
+          "marginBottom": 32,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#9FA7BC",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "marginBottom": 10,
+          }
+        }
+      >
+        EMAIL:
+      </Text>
+      <TextInput
+        allowFontScaling={true}
+        keyboardType="email-address"
+        onChangeText={[Function]}
+        placeholder="Enter your email..."
+        placeholderTextColor="#D5DEF1"
+        rejectResponderTermination={true}
+        style={
+          Array [
+            Object {
+              "borderColor": "#D5DEF1",
+              "borderRadius": 4,
+              "borderWidth": 1,
+              "color": "#646565",
+              "fontSize": 15,
+              "fontWeight": "400",
+              "padding": 16,
+            },
+            Object {
+              "borderColor": "#C21E5D",
+              "borderWidth": 1,
+            },
+          ]
+        }
+        testID="email-input"
+        underlineColorAndroid="rgba(0, 0, 0, 0)"
+        value="fake@email.com"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 32,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#9FA7BC",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "marginBottom": 10,
+          }
+        }
+      >
+        PASSWORD
+      </Text>
+      <TextInput
+        allowFontScaling={true}
+        onChangeText={[Function]}
+        placeholder="Enter your password..."
+        placeholderTextColor="#D5DEF1"
+        rejectResponderTermination={true}
+        secureTextEntry={true}
+        style={
+          Array [
+            Object {
+              "borderColor": "#D5DEF1",
+              "borderRadius": 4,
+              "borderWidth": 1,
+              "color": "#646565",
+              "fontSize": 15,
+              "fontWeight": "400",
+              "padding": 16,
+            },
+            Object {
+              "borderColor": "#C21E5D",
+              "borderWidth": 1,
+            },
+          ]
+        }
+        testID="password-input"
+        underlineColorAndroid="rgba(0, 0, 0, 0)"
+        value="password"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "borderRadius": 3,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+        testID="login-button"
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#2089dc",
+              "borderColor": "#2089dc",
+              "borderRadius": 3,
+              "borderWidth": 0,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "padding": 8,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "white",
+                "fontSize": 18,
+                "paddingBottom": 1,
+                "paddingTop": 2,
+                "textAlign": "center",
+              }
+            }
+          >
+            Login
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

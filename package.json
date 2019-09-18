@@ -1,0 +1,122 @@
+{
+  "name": "seedrnts",
+  "version": "0.0.1",
+  "private": true,
+  "pre-commit": [
+    "prettier:check",
+    "test"
+  ],
+  "scripts": {
+    "start": "react-native start",
+    "start:dev": "yarn build-config:development && yarn start",
+    "start:qa": "yarn build-config:qa && yarn start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "test": "yarn build-config:test && jest --forceExit --detectOpenHandles --watchAll=false --coverage --verbose",
+    "react-native": "react-native",
+    "prettier": "prettier --parser typescript --single-quote",
+    "prettier:check": "yarn prettier --list-different \"src/**/*.{ts,tsx}\"",
+    "format": "yarn prettier --write \"src/**/*.{ts,tsx}\"",
+    "build-config:development": "cross-env NODE_ENV=development ts-node ./build-config.ts",
+    "build-config:develop": "cross-env NODE_ENV=development ts-node ./build-config.ts",
+    "build-config:qa": "cross-env NODE_ENV=qa ts-node ./build-config.ts",
+    "build-config:stage": "cross-env NODE_ENV=stage ts-node ./build-config.ts",
+    "build-config:production": "cross-env NODE_ENV=production ts-node ./build-config.ts",
+    "build-config:master": "cross-env NODE_ENV=production ts-node ./build-config.ts",
+    "build-config:test": "cross-env NODE_ENV=test ts-node ./build-config.ts"
+  },
+  "dependencies": {
+    "react": "16.8.6",
+    "react-native": "0.60.3",
+    "react-native-elements": "^1.2.0",
+    "react-native-gesture-handler": "^1.4.1",
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^4.0.5",
+    "react-navigation-stack": "^1.8.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-observable": "^1.2.0",
+    "rxjs": "^6.5.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/runtime": "^7.5.0",
+    "@react-native-community/eslint-config": "^0.0.3",
+    "@types/jest": "^24.0.15",
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.60.1",
+    "@types/react-test-renderer": "^16.8.2",
+    "babel-jest": "^24.1.0",
+    "cross-env": "^6.0.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "^24.1.0",
+    "metro-react-native-babel-preset": "^0.54.1",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.18.2",
+    "react-test-renderer": "16.8.6",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.5.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.ts",
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ],
+    "testEnvironment": "enzyme",
+    "testMatch": [
+      "<rootDir>/src/**/?(*.)(spec|test).[tj]s?(x)"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|react-navigation)/"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.{ts,tsx}",
+      "!<rootDir>/src/test/**/*.ts",
+      "!<rootDir>/src/**/styles.ts",
+      "!<rootDir>/src/modules/models/*.ts",
+      "!<rootDir>/src/modules/state-mgmt/rootState.ts",
+      "!<rootDir>/src/modules/AppRoot.tsx",
+      "!<rootDir>/src/modules/services/ApiService.ts",
+      "!<rootDir>/src/modules/state-mgmt/store.ts",
+      "!<rootDir>/src/modules/routingModule.tsx",
+      "!<rootDir>/src/modules/views/Pad/Main/**/*.*",
+      "!<rootDir>/src/**/index.tsx",
+      "!<rootDir>/src/**/index.ts"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "reporters": [
+      "default"
+    ],
+    "coverageDirectory": "./coverage"
+  },
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 160,
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "quoteProps": "as-needed",
+    "jsxSingleQuote": false,
+    "jsxBracketSameLine": false,
+    "proseWrap": "preserve"
+  }
+}

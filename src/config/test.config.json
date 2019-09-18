@@ -1,0 +1,7 @@
+{
+  "ENV": "test",
+  "API_URL": "https://this-should-not-matter/service",
+  "API_RETRY_TIMEOUT": 20,
+  "CHECK_FOR_UPDATES_INTERVAL": 20,
+  "STORAGE_TIMEOUT": 20
+}

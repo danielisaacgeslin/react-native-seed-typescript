@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorBoundaryTest should render child 1`] = `
+<Text>
+  Render test
+</Text>
+`;
+
+exports[`ErrorBoundaryTest should render placeholder when child render fails 1`] = `
+<Text>
+  Error was catched
+</Text>
+`;
