@@ -1,21 +1,19 @@
 import React from 'react';
-import { create } from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { render, RenderAPI } from 'react-native-testing-library';
 
 import Todo, { ITodoProps } from './Todo';
 import { getTodo_1 } from '../../../../../test/entities';
 
-describe('Login', () => {
+describe('Todo', () => {
   let props: ITodoProps;
-  let wrapper;
+  let wrapper: RenderAPI;
 
-  global.console.error = () => null;
   beforeEach(() => {
     props = { todo: getTodo_1() };
-    wrapper = mount(<Todo {...props} />);
+    wrapper = render(<Todo {...props} />);
   });
 
   it('should render', () => {
-    expect(create(wrapper).toJSON()).toMatchSnapshot();
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 });

@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">8.33% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/12</span>
+        <span class='fraction'>12/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/9</span>
+        <span class='fraction'>9/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>5/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.11% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/9</span>
+        <span class='fraction'>9/9</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -144,18 +144,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -217,19 +217,19 @@ export interface ILoginState {
   password: string;
 }
 &nbsp;
-const Login = <span class="fstat-no" title="function not covered" >({</span> navigation, hasError, isLoading, login, setNavigation, checkForUpdates, isAndroid = <span class="branch-0 cbranch-no" title="branch not covered" >ENV.PLATFORM.IS_ANDROID </span>}: ILoginProps) =&gt; {
-  const [state, setState] = <span class="cstat-no" title="statement not covered" >useState&lt;ILoginState&gt;({ email: 'fake@email.com', password: 'password' });</span>
+const Login = ({ navigation, hasError, isLoading, login, setNavigation, checkForUpdates, isAndroid = ENV.PLATFORM.IS_ANDROID }: ILoginProps) =&gt; {
+  const [state, setState] = useState&lt;ILoginState&gt;({ email: 'fake@email.com', password: 'password' });
 &nbsp;
-  const onChangeEmail = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >(e</span>mail: string) =&gt; <span class="cstat-no" title="statement not covered" >setState({ ...state, email }),</span> [state, setState]);</span>
-  const onChangePassword = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >(p</span>assword: string) =&gt; <span class="cstat-no" title="statement not covered" >setState({ ...state, password }),</span> [state, setState]);</span>
-  const onLogin = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >login(state.email, state.password),</span> [login, state]);</span>
+  const onChangeEmail = useCallback((email: string) =&gt; setState({ ...state, email }), [state, setState]);
+  const onChangePassword = useCallback((password: string) =&gt; setState({ ...state, password }), [state, setState]);
+  const onLogin = useCallback(() =&gt; login(state.email, state.password), [login, state]);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    setNavigation(navigation);</span>
-<span class="cstat-no" title="statement not covered" >    checkForUpdates();</span>
+  useEffect(() =&gt; {
+    setNavigation(navigation);
+    checkForUpdates();
   });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;View style={styles.container}&gt;
       &lt;KeyboardAvoidingView behavior="padding" style={styles.keyboardContainer} keyboardVerticalOffset={isAndroid ? ENV.KEYBOARD_VERTICAL_OFFSET : 0}&gt;
         {hasError ? &lt;Text style={styles.headingError}&gt;Oops! Invalid email or password&lt;/Text&gt; : null}
@@ -274,7 +274,7 @@ export default memo(Login);
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 18 2019 09:53:18 GMT+0200 (GMT+02:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 18 2019 12:48:19 GMT+0200 (GMT+02:00)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

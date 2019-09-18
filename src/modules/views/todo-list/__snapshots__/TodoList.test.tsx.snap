@@ -71,6 +71,7 @@ exports[`TodoList should render 1`] = `
       renderItem={[Function]}
       scrollEventThrottle={50}
       stickyHeaderIndices={Array []}
+      testID="todo-list"
       updateCellsBatchingPeriod={50}
       viewabilityConfigCallbackPairs={Array []}
       windowSize={21}

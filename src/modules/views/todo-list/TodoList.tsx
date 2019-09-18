@@ -26,7 +26,14 @@ const TodoList = ({ currentUser, todoMap, fetchTodoList }: ITodoListProps) => {
     <View style={styles.todoContainer}>
       <View style={styles.todoBody}>
         <Text>this is an infinite scroll, please scroll down :)</Text>
-        <FlatList data={todoList} renderItem={renderTodo} keyExtractor={keyExtractor} onEndReached={onEndReached} onEndReachedThreshold={0.5} />
+        <FlatList
+          testID="todo-list"
+          data={todoList}
+          renderItem={renderTodo}
+          keyExtractor={keyExtractor}
+          onEndReached={onEndReached}
+          onEndReachedThreshold={0.5}
+        />
       </View>
     </View>
   );

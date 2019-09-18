@@ -1,14 +1,12 @@
 import React from 'react';
-import Login, { ILoginProps } from './Login';
-import { mount } from 'enzyme';
+import { fireEvent, render, RenderAPI } from 'react-native-testing-library';
 
-import { create } from 'react-test-renderer';
+import Login, { ILoginProps } from './Login';
 
 describe('Login', () => {
   let props: ILoginProps;
-  let wrapper;
+  let wrapper: RenderAPI;
 
-  global.console.error = () => null;
   beforeEach(() => {
     props = {
       isLoading: false,
@@ -18,49 +16,35 @@ describe('Login', () => {
       navigation: jest.fn() as any,
       checkForUpdates: jest.fn()
     };
-    wrapper = mount(<Login {...props} />);
+    wrapper = render(<Login {...props} />);
   });
 
   it('should render', () => {
     props.isAndroid = false;
-    wrapper = mount(<Login {...props} />);
-    expect(create(wrapper).toJSON()).toMatchSnapshot();
+    wrapper = render(<Login {...props} />);
+    expect(wrapper.toJSON()).toMatchSnapshot();
     expect(props.setNavigation).toBeCalledWith(props.navigation);
     expect(props.checkForUpdates).toBeCalled();
   });
 
   it('should render on Android', () => {
     props.isAndroid = true;
-    wrapper = mount(<Login {...props} />);
-    expect(create(wrapper).toJSON()).toMatchSnapshot();
+    wrapper = render(<Login {...props} />);
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 
   it('should render with errors', () => {
     props.hasError = true;
-    wrapper = mount(<Login {...props} />);
-    expect(create(wrapper).toJSON()).toMatchSnapshot();
+    wrapper = render(<Login {...props} />);
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 
   it('should login', () => {
     const email = 'mail@mail.mail';
     const password = 'psw';
-    wrapper
-      .find('[testID="email-input"]')
-      .first()
-      .props()
-      .onChangeText(email);
-    wrapper.update();
-    wrapper
-      .find('[testID="password-input"]')
-      .first()
-      .props()
-      .onChangeText(password);
-    wrapper.update();
-    wrapper
-      .find('[testID="login-button"]')
-      .first()
-      .props()
-      .onPress();
+    fireEvent.changeText(wrapper.getByTestId('email-input'), email);
+    fireEvent.changeText(wrapper.getByTestId('password-input'), password);
+    fireEvent.press(wrapper.getByTestId('login-button'));
     expect(props.login).lastCalledWith(email, password);
   });
 });

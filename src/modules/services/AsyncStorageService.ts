@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Observable, from, throwError } from 'rxjs';
 import { map, timeoutWith } from 'rxjs/operators';
 

@@ -26,6 +26,7 @@
     "build-config:test": "cross-env NODE_ENV=test ts-node ./build-config.ts"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.6.1",
     "react": "16.8.6",
     "react-native": "0.60.3",
     "react-native-elements": "^1.2.0",
@@ -58,6 +59,7 @@
     "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
     "react-dom": "^16.9.0",
+    "react-native-testing-library": "^1.11.1",
     "react-test-renderer": "16.8.6",
     "ts-node": "^8.4.1",
     "typescript": "^3.5.3"

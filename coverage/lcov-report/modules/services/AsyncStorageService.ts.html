@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>8/8</span>
+        <span class='fraction'>0/8</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>0/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>8/8</span>
+        <span class='fraction'>0/8</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -86,29 +86,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { AsyncStorage } from 'react-native';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import AsyncStorage from '@react-native-community/async-storage';
 import { Observable, from, throwError } from 'rxjs';
 import { map, timeoutWith } from 'rxjs/operators';
 &nbsp;
@@ -117,26 +117,26 @@ import { Logger } from './Logger';
 import { safeParse } from '../../utils/generalUtils';
 &nbsp;
 export class AsyncStorageService {
-  private storage = AsyncStorage;
+  private storage = <span class="cstat-no" title="statement not covered" >AsyncStorage;</span>
 &nbsp;
-  public setItem(key: string, item: any): Observable&lt;void&gt; {
-    Logger.log(`storage: setting ${key}:`, item);
-    return from(this.storage.setItem(key, JSON.stringify(item))).pipe(
+<span class="fstat-no" title="function not covered" >  pu</span>blic setItem(key: string, item: any): Observable&lt;void&gt; {
+<span class="cstat-no" title="statement not covered" >    Logger.log(`storage: setting ${key}:`, item);</span>
+<span class="cstat-no" title="statement not covered" >    return from(this.storage.setItem(key, JSON.stringify(item))).pipe(</span>
       timeoutWith(ENV.STORAGE_TIMEOUT, throwError(new Error(`storage: timeout setting ${key}`)))
     ) as any;
   }
 &nbsp;
-  public getItem&lt;T&gt;(key: string): Observable&lt;T&gt; {
-    Logger.log(`storage: getting ${key}`);
-    return from(this.storage.getItem(key)).pipe(
+<span class="fstat-no" title="function not covered" >  pu</span>blic getItem&lt;T&gt;(key: string): Observable&lt;T&gt; {
+<span class="cstat-no" title="statement not covered" >    Logger.log(`storage: getting ${key}`);</span>
+<span class="cstat-no" title="statement not covered" >    return from(this.storage.getItem(key)).pipe(</span>
       timeoutWith(ENV.STORAGE_TIMEOUT, throwError(new Error(`storage: timeout getting ${key}`))),
-      map(item =&gt; safeParse(item))
+      map(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >safeParse(item))</span>
     );
   }
 &nbsp;
-  public removeItem(key: string): Observable&lt;void&gt; {
-    Logger.log(`storage: removing ${key}`);
-    return from(this.storage.removeItem(key)).pipe(timeoutWith(ENV.STORAGE_TIMEOUT, throwError(new Error(`storage: timeout setting ${key}`))));
+<span class="fstat-no" title="function not covered" >  pu</span>blic removeItem(key: string): Observable&lt;void&gt; {
+<span class="cstat-no" title="statement not covered" >    Logger.log(`storage: removing ${key}`);</span>
+<span class="cstat-no" title="statement not covered" >    return from(this.storage.removeItem(key)).pipe(timeoutWith(ENV.STORAGE_TIMEOUT, throwError(new Error(`storage: timeout setting ${key}`))));</span>
   }
 }
 &nbsp;</pre></td></tr>
@@ -145,7 +145,7 @@ export class AsyncStorageService {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 18 2019 09:53:18 GMT+0200 (GMT+02:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 18 2019 12:48:19 GMT+0200 (GMT+02:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>
