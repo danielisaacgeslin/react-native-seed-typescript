@@ -1,17 +1,18 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render, RenderAPI } from 'react-native-testing-library';
 
 import Avatar from './Avatar';
 
 describe('Avatar', () => {
   let props;
+  let wrapper: RenderAPI;
   beforeEach(() => {
     props = {
       avatar: 'https://avatar.jpg'
     };
+    wrapper = render(<Avatar {...props} />);
   });
   it('should render', () => {
-    const rendered = renderer.create(<Avatar {...props} />).toJSON();
-    expect(rendered).toMatchSnapshot();
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 });

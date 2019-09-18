@@ -1,8 +1,8 @@
 import React from 'react';
+import { render } from 'react-native-testing-library';
+import { Text } from 'react-native';
 
 import ErrorBoundary from './ErrorBoundary';
-import renderer from 'react-test-renderer';
-import { Text } from 'react-native';
 
 class HandGranade extends React.Component {
   public render() {
@@ -13,28 +13,22 @@ class HandGranade extends React.Component {
 }
 
 describe('ErrorBoundaryTest', () => {
-  global.console.error = () => {
-    /** */
-  };
+  global.console.error = () => null;
   it('should render child', () => {
-    const rendered = renderer
-      .create(
-        <ErrorBoundary>
-          <Text>Render test</Text>
-        </ErrorBoundary>
-      )
-      .toJSON();
-    expect(rendered).toMatchSnapshot();
+    const wrapper = render(
+      <ErrorBoundary>
+        <Text>Render test</Text>
+      </ErrorBoundary>
+    );
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 
   it('should render placeholder when child render fails', () => {
-    const rendered = renderer
-      .create(
-        <ErrorBoundary>
-          <HandGranade>Render test</HandGranade>
-        </ErrorBoundary>
-      )
-      .toJSON();
-    expect(rendered).toMatchSnapshot();
+    const wrapper = render(
+      <ErrorBoundary>
+        <HandGranade>Render test</HandGranade>
+      </ErrorBoundary>
+    );
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 });

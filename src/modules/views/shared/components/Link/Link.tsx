@@ -15,7 +15,7 @@ export default class Link extends React.PureComponent<ILinkProps> {
   public render() {
     const { url, text } = this.props;
     return (
-      <TouchableOpacity onPress={this.onPress}>
+      <TouchableOpacity testID="link" onPress={this.onPress}>
         <Text style={Styles.link}>{text || url}</Text>
       </TouchableOpacity>
     );

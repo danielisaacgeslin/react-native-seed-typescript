@@ -17,6 +17,7 @@ exports[`Link should render 1`] = `
       "opacity": 1,
     }
   }
+  testID="link"
 >
   <Text
     style={
@@ -52,6 +53,7 @@ exports[`Link should render with text 1`] = `
       "opacity": 1,
     }
   }
+  testID="link"
 >
   <Text
     style={

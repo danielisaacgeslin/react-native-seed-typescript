@@ -1,19 +1,21 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import { fireEvent, render, RenderAPI } from 'react-native-testing-library';
 
 import Link from './Link';
 
 describe('Link', () => {
   let props;
+  let wrapper: RenderAPI;
+
   beforeEach(() => {
     props = {
       url: 'https://url.jpg'
     };
+    wrapper = render(<Link {...props} />);
   });
+
   it('should render', () => {
-    const rendered = renderer.create(<Link {...props} />).toJSON();
-    expect(rendered).toMatchSnapshot();
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 
   it('should render with text', () => {
@@ -21,42 +23,42 @@ describe('Link', () => {
       url: 'https://url.jpg',
       text: 'This is a Link'
     };
-    const rendered = renderer.create(<Link {...props} />).toJSON();
-    expect(rendered).toMatchSnapshot();
+    wrapper = render(<Link {...props} />);
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 
-  it('should open a link', async () => {
+  it('should open a link', done => {
     const url = 'https://google.com';
     const text = 'Google';
     Link.linking = {
       canOpenURL: jest.fn().mockReturnValue(Promise.resolve(true)),
       openURL: jest.fn()
     } as any;
-    const wrapper = shallow(<Link {...props} />);
-    wrapper.setProps({ url, text });
-    await (wrapper
-      .find('TouchableOpacity')
-      .first()
-      .prop('onPress') as any)();
-    expect(Link.linking.canOpenURL).toBeCalledWith(url);
-    expect(Link.linking.openURL).toBeCalledWith(url);
+    wrapper = render(<Link {...props} />);
+    wrapper.update(<Link {...props} text={text} url={url} />);
+    fireEvent.press(wrapper.getByTestId('link'));
+    setTimeout(() => {
+      expect(Link.linking.canOpenURL).toBeCalledWith(url);
+      expect(Link.linking.openURL).toBeCalledWith(url);
+      done();
+    });
   });
 
-  it('should not open a link', async () => {
+  it('should not open a link', done => {
     const url = 'https://google.com';
     const text = 'Google';
     Link.linking = {
       canOpenURL: jest.fn().mockReturnValue(Promise.resolve(false)),
       openURL: jest.fn()
     } as any;
-    const wrapper = shallow(<Link {...props} />);
-    wrapper.setProps({ url, text });
-    await (wrapper
-      .find('TouchableOpacity')
-      .first()
-      .prop('onPress') as any)();
-    expect(Link.linking.canOpenURL).toBeCalledWith(url);
-    expect(Link.linking.openURL).not.toBeCalledWith(url);
+    wrapper = render(<Link {...props} />);
+    wrapper.update(<Link {...props} text={text} url={url} />);
+    fireEvent.press(wrapper.getByTestId('link'));
+    setTimeout(() => {
+      expect(Link.linking.canOpenURL).toBeCalledWith(url);
+      expect(Link.linking.openURL).not.toBeCalledWith(url);
+      done();
+    });
   });
 
   it('should catch error', () => {
@@ -66,11 +68,8 @@ describe('Link', () => {
         throw new Error('Error');
       }
     } as any;
-    const wrapper = shallow(<Link {...props} />);
-    wrapper.setProps({ url });
-    (wrapper
-      .find('TouchableOpacity')
-      .first()
-      .prop('onPress') as any)();
+    wrapper = render(<Link {...props} />);
+    wrapper.update(<Link {...props} url={url} />);
+    fireEvent.press(wrapper.getByTestId('link'));
   });
 });
