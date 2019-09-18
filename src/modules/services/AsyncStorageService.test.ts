@@ -2,6 +2,8 @@ import { Observable } from 'rxjs';
 
 import { AsyncStorageService } from './AsyncStorageService';
 
+jest.mock('@react-native-community/async-storage', () => ({}));
+
 describe('AsyncStorageService', () => {
   let asyncStorage: AsyncStorageService;
   let storage;
