@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/7</span>
+        <span class='fraction'>7/7</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>5/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/7</span>
+        <span class='fraction'>7/7</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -80,22 +80,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Epic, ofType } from 'redux-observable';
 import { of, concat } from 'rxjs';
 import { catchError, mergeMap, switchMap } from 'rxjs/operators';
@@ -105,29 +105,29 @@ import { IAction, IRootState, IEpicDependencies } from '../rootState';
 import { coreState } from '../core';
 import { actions, ActionType } from './actions';
 &nbsp;
-export const authGetEpicAuthStart: Epic&lt;IAction, IAction, IRootState, IEpicDependencies&gt; = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(a</span>ction$, state$, deps) =&gt;</span>
-<span class="cstat-no" title="statement not covered" >  action$.pipe(</span>
+export const authGetEpicAuthStart: Epic&lt;IAction, IAction, IRootState, IEpicDependencies&gt; = (action$, state$, deps) =&gt;
+  action$.pipe(
     ofType(ActionType.START),
-    mergeMap(<span class="fstat-no" title="function not covered" >ac</span>tion =&gt;
-<span class="cstat-no" title="statement not covered" >      concat(</span>
+    mergeMap(action =&gt;
+      concat(
         of(actions.setLoading(true)),
         of(action).pipe(
-          switchMap(<span class="fstat-no" title="function not covered" >({</span> payload }) =&gt; <span class="cstat-no" title="statement not covered" >deps.apiService.login(payload))</span>,
-          switchMap(<span class="fstat-no" title="function not covered" >(r</span>es: GeneralModel.ILoginResponse) =&gt; <span class="cstat-no" title="statement not covered" >[actions.success(res._id), coreState.actions.bootstrap(res.access_token)])</span>
+          switchMap(({ payload }) =&gt; deps.apiService.login(payload)),
+          switchMap((res: GeneralModel.ILoginResponse) =&gt; [actions.success(res._id), coreState.actions.bootstrap(res.access_token)])
         ),
         of(actions.setLoading(false))
-      ).pipe(catchError(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >of(actions.fail(), actions.setLoading(false)))</span>)
+      ).pipe(catchError(() =&gt; of(actions.fail(), actions.setLoading(false))))
     )
   );
 &nbsp;
-export const epics = <span class="cstat-no" title="statement not covered" >[authGetEpicAuthStart];</span>
+export const epics = [authGetEpicAuthStart];
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 18 2019 08:49:25 GMT+0200 (GMT+02:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 18 2019 09:40:09 GMT+0200 (GMT+02:00)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

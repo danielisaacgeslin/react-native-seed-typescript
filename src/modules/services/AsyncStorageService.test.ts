@@ -8,9 +8,9 @@ describe('AsyncStorageService', () => {
   beforeEach(() => {
     asyncStorage = new AsyncStorageService();
     storage = storage = {
-      setItemAsync: jest.fn().mockResolvedValue(Promise.resolve()),
-      getItemAsync: jest.fn().mockReturnValue(Promise.resolve('{"a":1}')),
-      deleteItemAsync: jest.fn().mockResolvedValue(Promise.resolve())
+      setItem: jest.fn().mockResolvedValue(Promise.resolve()),
+      getItem: jest.fn().mockReturnValue(Promise.resolve('{"a":1}')),
+      removeItem: jest.fn().mockResolvedValue(Promise.resolve())
     };
     (asyncStorage as any).storage = storage;
   });
@@ -19,13 +19,13 @@ describe('AsyncStorageService', () => {
     const key = 'key';
     const item = { a: 1 };
     expect(asyncStorage.setItem(key, item) instanceof Observable).toBe(true);
-    expect(storage.setItemAsync).toBeCalledWith(key, '{"a":1}');
+    expect(storage.setItem).toBeCalledWith(key, '{"a":1}');
   });
 
   it('should get an item', done => {
     const key = 'key';
     asyncStorage.getItem(key).subscribe(item => {
-      expect(storage.getItemAsync).toBeCalledWith(key);
+      expect(storage.getItem).toBeCalledWith(key);
       expect(item).toEqual({ a: 1 });
       done();
     });
@@ -34,6 +34,6 @@ describe('AsyncStorageService', () => {
   it('should remove an item', () => {
     const key = 'key';
     expect(asyncStorage.removeItem(key) instanceof Observable).toBe(true);
-    expect(storage.deleteItemAsync).toBeCalledWith(key);
+    expect(storage.removeItem).toBeCalledWith(key);
   });
 });

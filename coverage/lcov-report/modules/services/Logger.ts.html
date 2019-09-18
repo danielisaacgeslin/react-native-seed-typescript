@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/12</span>
+        <span class='fraction'>12/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>5/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>8/8</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -68,39 +68,39 @@
 <a name='L20'></a><a href='#L20'>20</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ENV } from '../../constants';
 &nbsp;
 export abstract class Logger {
-  private static shouldLog = <span class="cstat-no" title="statement not covered" >!ENV.IS_TEST;</span>
-  private static printer = <span class="cstat-no" title="statement not covered" >console;</span>
+  private static shouldLog = !ENV.IS_TEST;
+  private static printer = console;
 &nbsp;
-  public static log = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(.</span>..args) =&gt; <span class="cstat-no" title="statement not covered" >Logger.logMethod('log', ...args);</span></span>
-  public static info = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(.</span>..args) =&gt; <span class="cstat-no" title="statement not covered" >Logger.logMethod('info', ...args);</span></span>
-  public static warn = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(.</span>..args) =&gt; <span class="cstat-no" title="statement not covered" >Logger.logMethod('warn', ...args);</span></span>
+  public static log = (...args) =&gt; Logger.logMethod('log', ...args);
+  public static info = (...args) =&gt; Logger.logMethod('info', ...args);
+  public static warn = (...args) =&gt; Logger.logMethod('warn', ...args);
   /* istanbul ignore next line */
   public static error = (...args) =&gt; Logger.logMethod(ENV.IS_PROD ? 'error' : 'warn', ...args); /** console.error pops up read scary messages using devtools */
-  public static table = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(.</span>..args) =&gt; <span class="cstat-no" title="statement not covered" >Logger.logMethod('table', ...args);</span></span>
+  public static table = (...args) =&gt; Logger.logMethod('table', ...args);
 &nbsp;
-  private static logMethod = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(l</span>evel, ...args) =&gt; {</span>
+  private static logMethod = (level, ...args) =&gt; {
     /* istanbul ignore next line */
     if (!Logger.shouldLog) return; // we don't want to cover the line that disables logs on the test env
-<span class="cstat-no" title="statement not covered" >    Logger.printer[level](...args);</span>
+    Logger.printer[level](...args);
   };
 }
 &nbsp;</pre></td></tr>
@@ -109,7 +109,7 @@ export abstract class Logger {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 18 2019 08:49:25 GMT+0200 (GMT+02:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 18 2019 09:40:09 GMT+0200 (GMT+02:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>
