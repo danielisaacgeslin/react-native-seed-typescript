@@ -37,7 +37,7 @@ const Login = ({ navigation, hasError, isLoading, login, setNavigation, checkFor
     <View style={styles.container}>
       <KeyboardAvoidingView behavior="padding" style={styles.keyboardContainer} keyboardVerticalOffset={isAndroid ? ENV.KEYBOARD_VERTICAL_OFFSET : 0}>
         {hasError ? <Text style={styles.headingError}>Oops! Invalid email or password</Text> : null}
-        <Text style={styles.heading1}>React Native Seed</Text>
+        <Text style={styles.heading1}>Seed RN Typescript</Text>
         <Text style={styles.heading2}>Please login to your account</Text>
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>EMAIL:</Text>

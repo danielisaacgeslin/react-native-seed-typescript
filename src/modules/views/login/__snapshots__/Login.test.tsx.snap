@@ -35,7 +35,7 @@ exports[`Login should render 1`] = `
         }
       }
     >
-      React Native Seed
+      Seed RN Typescript
     </Text>
     <Text
       style={
@@ -234,7 +234,7 @@ exports[`Login should render on Android 1`] = `
         }
       }
     >
-      React Native Seed
+      Seed RN Typescript
     </Text>
     <Text
       style={
@@ -445,7 +445,7 @@ exports[`Login should render with errors 1`] = `
         }
       }
     >
-      React Native Seed
+      Seed RN Typescript
     </Text>
     <Text
       style={
