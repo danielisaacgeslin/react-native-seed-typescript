@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { GeneralModel } from '../../models';
 import { IRootState } from '../../state-mgmt/rootState';
@@ -6,11 +7,10 @@ import { todoState } from '../..//state-mgmt/todo';
 import TodoList from './TodoList';
 
 export const mapStateToProps = (state: IRootState) => ({
-  todoMap: state.todo.todoMap,
-  currentUser: state.user.userMap[state.auth.currentUserId]
+  todoMap: state.todo.todoMap
 });
 
-export const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = (dispatch: Dispatch) => ({
   fetchTodoList: (query: GeneralModel.IApiQuery) => dispatch(todoState.actions.setListStart(query))
 });
 

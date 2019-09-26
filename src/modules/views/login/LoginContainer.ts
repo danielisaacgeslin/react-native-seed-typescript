@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { IRootState } from '../../state-mgmt/rootState';
 import { coreState } from '../../state-mgmt/core';
@@ -10,7 +11,7 @@ export const mapStateToProps = (state: IRootState) => ({
   hasError: state.auth.hasError
 });
 
-export const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = (dispatch: Dispatch) => ({
   setNavigation: navigation => dispatch(coreState.actions.setNavigation(navigation)),
   login: (email: string, password: string) => dispatch(authState.actions.start(email, password)),
   checkForUpdates: () => dispatch(coreState.actions.checkForUpdates())

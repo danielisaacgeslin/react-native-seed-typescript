@@ -1,13 +1,12 @@
 import { mapStateToProps, mapDispatchToProps } from './TodoListContainer';
 import { todoState } from '../..//state-mgmt/todo';
-import { getState, getUser_1 } from '../../../test/entities';
+import { getState } from '../../../test/entities';
 
 describe('TodoListContainer', () => {
   it('should mapStateToProps, ', () => {
     const state = getState();
     expect(mapStateToProps(getState())).toEqual({
-      todoMap: getState().todo.todoMap,
-      currentUser: getUser_1()
+      todoMap: getState().todo.todoMap
     });
   });
   it('should mapDispatchToProps', () => {

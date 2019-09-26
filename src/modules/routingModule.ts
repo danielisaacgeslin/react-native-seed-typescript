@@ -1,17 +1,18 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import TodoListContainer from './views/todo-list';
-import LoginContainer from './views/login';
+import TodoList from './views/todo-list';
+import Login from './views/login';
+import { ROUTE } from '../constants';
 
-(TodoListContainer as any).navigationOptions = { title: 'Todo List' };
+(TodoList as any).navigationOptions = { title: 'Todo List' };
 
 const stackNavigator = createStackNavigator(
   {
-    Login: LoginContainer,
-    TodoList: TodoListContainer
+    [ROUTE.LOGIN]: Login,
+    [ROUTE.TODO_LIST]: TodoList
   },
-  { initialRouteName: 'Login', headerMode: 'float' }
+  { initialRouteName: ROUTE.LOGIN, headerMode: 'float' }
 );
 
 export default createAppContainer(stackNavigator);

@@ -17,6 +17,10 @@ exports[`TodoList should render 1`] = `
     }
   >
     <Text>
+      Focus state is 
+      isFocused
+    </Text>
+    <Text>
       this is an infinite scroll, please scroll down :)
     </Text>
     <RCTScrollView

@@ -4,7 +4,7 @@ import { AjaxError } from 'rxjs/ajax';
 import { tap, map, catchError, mergeMap, switchMap, startWith } from 'rxjs/operators';
 import { StackActions, NavigationActions } from 'react-navigation';
 
-import { ENV } from '../../../constants';
+import { ENV, ROUTE } from '../../../constants';
 import { actions as todoActions } from '../todo/actions';
 import { actions as userActions } from '../user/actions';
 import { IAction, IRootState, IEpicDependencies } from '../rootState';
@@ -61,7 +61,7 @@ export const coreGetEpicBootstrap: Epic<IAction, IAction, IRootState, IEpicDepen
       of(userActions.setListStart([state$.value.auth.currentUserId]), todoActions.setListStart({ page: 1, limit: ENV.PAGINATION.LIMIT })).pipe(
         /** side effect to navigate to initial authenticated view and reset the router so the user can't go back to the login */
         tap(() => {
-          const resetAction = StackActions.reset({ index: 0, actions: [NavigationActions.navigate({ routeName: 'TodoList' })] });
+          const resetAction = StackActions.reset({ index: 0, actions: [NavigationActions.navigate({ routeName: ROUTE.TODO_LIST })] });
           deps.navigationService.navigation.dispatch(resetAction);
         }),
         /** catches possible errors with statements inside this mergeMap (not the api service from users since this epic only emits an action) */
