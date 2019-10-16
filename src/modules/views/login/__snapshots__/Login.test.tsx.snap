@@ -149,7 +149,7 @@ exports[`Login should render 1`] = `
     >
       <View
         accessible={true}
-        clickable={true}
+        focusable={true}
         isTVSelectable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -348,7 +348,7 @@ exports[`Login should render on Android 1`] = `
     >
       <View
         accessible={true}
-        clickable={true}
+        focusable={true}
         isTVSelectable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -565,7 +565,7 @@ exports[`Login should render with errors 1`] = `
     >
       <View
         accessible={true}
-        clickable={true}
+        focusable={true}
         isTVSelectable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}

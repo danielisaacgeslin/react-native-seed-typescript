@@ -3,7 +3,7 @@
 exports[`Link should render 1`] = `
 <View
   accessible={true}
-  clickable={true}
+  focusable={true}
   isTVSelectable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -39,7 +39,7 @@ exports[`Link should render 1`] = `
 exports[`Link should render with text 1`] = `
 <View
   accessible={true}
-  clickable={true}
+  focusable={true}
   isTVSelectable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
