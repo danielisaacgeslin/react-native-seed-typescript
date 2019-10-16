@@ -11,7 +11,7 @@ export const mapStateToProps = (state: IRootState) => ({
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch) => ({
-  fetchTodoList: (query: GeneralModel.IApiQuery) => dispatch(todoState.actions.setListStart(query))
+  fetchTodoList: (query: GeneralModel.IApiQuery) => dispatch(todoState.actions.fetchListStart(query))
 });
 
 export default connect(

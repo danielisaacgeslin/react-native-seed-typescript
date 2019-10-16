@@ -22,6 +22,6 @@ describe('TodoListContainer', () => {
     const props = mapDispatchToProps(dispatch);
     const query = { page: 1, limit: 1 };
     props.fetchTodoList(query);
-    expect(dispatch).toBeCalledWith(todoState.actions.setListStart(query));
+    expect(dispatch).toBeCalledWith(todoState.actions.fetchListStart(query));
   });
 });

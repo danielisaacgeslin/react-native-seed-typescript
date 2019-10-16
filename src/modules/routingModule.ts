@@ -1,8 +1,8 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import TodoList from './views/todo-list';
-import Login from './views/login';
+import TodoList from './views/TodoList';
+import Login from './views/Login';
 import { ROUTE } from '../constants';
 
 (TodoList as any).navigationOptions = { title: 'Todo List' };

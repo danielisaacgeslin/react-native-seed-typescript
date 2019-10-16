@@ -8,13 +8,13 @@ describe('user reducer', () => {
     expect(reducer(initialState, { type: null, payload: null })).toBe(initialState);
   });
 
-  it('should return a new state ActionType.SET_LIST_SUCCESS', () => {
+  it('should return a new state ActionType.FETCH_LIST_SUCCESS', () => {
     const user = getUser_1();
-    expect(reducer(undefined, actions.setListSuccess([user]))).toEqual({ ...initialState, userMap: { [user._id]: user } });
+    expect(reducer(undefined, actions.fetchListSuccess([user]))).toEqual({ ...initialState, userMap: { [user._id]: user } });
   });
 
-  it('should return a new state ActionType.SET_SUCCESS', () => {
+  it('should return a new state ActionType.FETCH_SUCCESS', () => {
     const user = getUser_1();
-    expect(reducer(undefined, actions.setSuccess(user))).toEqual({ ...initialState, userMap: { [user._id]: user } });
+    expect(reducer(undefined, actions.fetchSuccess(user))).toEqual({ ...initialState, userMap: { [user._id]: user } });
   });
 });

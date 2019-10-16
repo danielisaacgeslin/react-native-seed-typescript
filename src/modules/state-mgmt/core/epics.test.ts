@@ -5,12 +5,13 @@ import { ENV } from '../../../constants';
 import { IEpicDependencies } from '../rootState';
 import { todoState } from '../todo';
 import { userState } from '../user';
-import { coreGetEpicSetNavigation, coreGetEpicErrorHandler, coreGetEpicCheckForUpdates, coreGetEpicBootstrap } from './epics';
-import { actions, ActionType } from './actions';
+import { setNavigation, errorHandler, coreGetEpicCheckForUpdates, coreGetEpicBootstrap } from './epics';
+import { actions } from './actions';
 import { getDeps } from '../../../test/epicDependencies';
 import { getInitialState, getState } from '../../../test/entities';
+import { runEpic } from '../../../test/runEpic';
 
-describe('Core epics', () => {
+describe('core epics', () => {
   let deps: IEpicDependencies;
   let error;
   let state$;
@@ -20,90 +21,80 @@ describe('Core epics', () => {
     deps = getDeps();
   });
 
-  describe('coreGetEpicSetNavigation', () => {
+  describe('setNavigation', () => {
     const navigation = state$;
 
-    it('should get epic for core set navigation', done => {
-      coreGetEpicSetNavigation(ActionsObservable.of(actions.setNavigation(navigation)), state$, deps).subscribe(output => {
+    it('core set navigation', () => {
+      return runEpic(setNavigation(ActionsObservable.of(actions.setNavigation(navigation)), state$, deps), actionList => {
         expect(deps.navigationService.setNavigation).toBeCalledWith(navigation);
-        expect(output).toEqual(actions.setNavigationSuccess());
-        done();
+        expect(actionList[0]).toEqual(actions.setNavigationSuccess());
       });
     });
-    it('should catch errors and dispatch them to the general error handler', done => {
+    it('should catch errors', () => {
       deps.navigationService.setNavigation = () => {
         throw error;
       };
-      coreGetEpicSetNavigation(ActionsObservable.of(actions.setNavigation(navigation)), state$, deps).subscribe(output => {
-        expect(output).toEqual(actions.epicError(error));
-        done();
+      return runEpic(setNavigation(ActionsObservable.of(actions.setNavigation(navigation)), state$, deps), actionList => {
+        expect(actionList[0]).toEqual(actions.epicError(error));
       });
     });
   });
 
-  describe('coreGetEpicErrorHandler', () => {
-    it('should dispatch no actions', done => {
-      coreGetEpicErrorHandler(ActionsObservable.of(actions.epicError(error)), state$, deps).subscribe(() => {
-        expect(false).toBe(true);
-        done();
-      });
-      setTimeout(() => {
-        expect(deps.logger.error).toBeCalledWith(error);
-        done();
-      }, 10);
+  describe('errorHandler', () => {
+    it('should dispatch no actions', () => {
+      return runEpic(
+        errorHandler(ActionsObservable.of(actions.epicError(error)), state$, deps),
+        actionList => {
+          expect(actionList).toHaveLength(0);
+          expect(deps.logger.error).toBeCalledWith(error);
+        },
+        10
+      );
     });
 
-    it('should dispatch resetSession action on 401 errors', done => {
+    it('should dispatch resetSession action on 401 errors', () => {
       const ajaxError = new AjaxError('message', { status: 401 } as any, {} as any);
-      coreGetEpicErrorHandler(ActionsObservable.of(actions.epicError(ajaxError)), state$, deps).subscribe(output => {
-        expect(false).toBe(true);
-        done();
-      });
-      setTimeout(() => {
-        expect(deps.logger.error).toBeCalledWith(error);
-        done();
-      }, 10);
+      return runEpic(
+        errorHandler(ActionsObservable.of(actions.epicError(ajaxError)), state$, deps),
+        actionList => {
+          expect(actionList).toHaveLength(0);
+          expect(deps.logger.error).toBeCalledWith(error);
+        },
+        10
+      );
     });
   });
 
   describe('coreGetEpicCheckForUpdates', () => {
-    it('should run the check for updates interval without emitting values', done => {
-      coreGetEpicCheckForUpdates(ActionsObservable.of(actions.checkForUpdates()), state$, deps).subscribe(() => {
-        expect(false).toBe(true); // this will never run because this observable doesn't emit values
-      });
-      setTimeout(() => {
-        expect((deps.helperService.checkForUpdates as any).mock.calls).toHaveLength(2);
-        done();
-      }, ENV.CHECK_FOR_UPDATES_INTERVAL * 1.5);
+    it('should run the check for updates interval without emitting values', () => {
+      return runEpic(
+        coreGetEpicCheckForUpdates(ActionsObservable.of(actions.checkForUpdates()), state$, deps),
+        actionList => {
+          expect((deps.helperService.checkForUpdates as any).mock.calls).toHaveLength(2);
+        },
+        ENV.CHECK_FOR_UPDATES_INTERVAL * 1.5
+      );
     });
   });
 
   describe('coreGetEpicBootstrap', () => {
-    it('should bootstrap the app', done => {
-      const emitedActions = [];
+    it('should bootstrap the app', () => {
       const token = 'token';
       state$ = { value: getState() };
-      coreGetEpicBootstrap(ActionsObservable.of(actions.bootstrap(token)), state$, deps).subscribe(output => {
-        emitedActions.push(output);
-        if (output.type === todoState.ActionType.SET_LIST_START) {
-          expect(deps.apiService.setToken).toBeCalledWith(token);
-          expect(deps.navigationService.navigation.dispatch).toBeCalled();
-          expect(emitedActions[0]).toEqual(userState.actions.setListStart([state$.value.auth.currentUserId]));
-          expect(emitedActions[1]).toEqual(todoState.actions.setListStart({ page: 1, limit: ENV.PAGINATION.LIMIT }));
-          done();
-        }
+      return runEpic(coreGetEpicBootstrap(ActionsObservable.of(actions.bootstrap(token)), state$, deps), actionList => {
+        expect(deps.apiService.setToken).toBeCalledWith(token);
+        expect(deps.navigationService.navigation.dispatch).toBeCalled();
+        expect(actionList[0]).toEqual(userState.actions.fetchListStart([state$.value.auth.currentUserId]));
+        expect(actionList[1]).toEqual(todoState.actions.fetchListStart({ page: 1, limit: ENV.PAGINATION.LIMIT }));
       });
     });
 
-    it('should catch errors and dispatch them to the general error handler', done => {
+    it('should catch errors', () => {
       deps.navigationService.navigation.dispatch = () => {
         throw error;
       };
-      coreGetEpicBootstrap(ActionsObservable.of(actions.bootstrap('token')), state$, deps).subscribe(output => {
-        if (output.type === ActionType.EPIC_ERROR) {
-          expect(output).toEqual(actions.epicError(error));
-          done();
-        }
+      return runEpic(coreGetEpicBootstrap(ActionsObservable.of(actions.bootstrap('token')), state$, deps), actionList => {
+        expect(actionList[0]).toEqual(actions.epicError(error));
       });
     });
   });

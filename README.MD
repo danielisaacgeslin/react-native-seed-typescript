@@ -129,7 +129,7 @@ export const actions = {
 * * state$ `is an observable containing the current redux state. It is usually accesed like this: state$.value.auth.currentUserId`
 
 ```typescript
-export const userGetEpicGetUserList: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) => // returns an observable
+export const getUserList: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) => // returns an observable
   action$.pipe( // pipes the action observable to change the flow
     ofType(ActionType.SET_LIST_START), // filter to get only ActionType.SET_LIST_START emitions
     mergeMap(action => of(null).pipe( // mergeMap to a new observable pipe in case it throws an error and completes, the next SET_LIST_START will still be listened to
@@ -317,15 +317,15 @@ describe('auth epics', () => {
     deps = getDeps(); // fresh dependency mocks from the test helpers
   });
 
-  describe('authGetEpicAuthStart', () => {
+  describe('authStart', () => {
     const email = 'email';
     const password = 'password';
 
-    it('should get epic for auth start', done => {
+    it('auth start', done => {
       const emitedActions = [];
       const loginResponse = getLoginResponse();
       const action$ = ActionsObservable.of(actions.start(email, password));
-      authGetEpicAuthStart(action$, {/** if we need a mock state, this is the place to put it */} as any, deps).subscribe(output => {
+      authStart(action$, {/** if we need a mock state, this is the place to put it */} as any, deps).subscribe(output => {
         emitedActions.push(output); // we save each emision here
         if (output.type === ActionType.SET_LOADING && output.payload.isLoading === false) { // we chouse on which emision to stop and test
           expect(deps.apiService.login).toBeCalledWith({ email, password });
@@ -340,10 +340,10 @@ describe('auth epics', () => {
     });
 
     /** we also test the catchError branch */
-    it('should catch errors and dispatch them to the auth error handler', done => {
+    it('should catch errors', done => {
       const emitedActions = [];
       deps.apiService.login = () => { throw error; };
-      authGetEpicAuthStart(ActionsObservable.of(actions.start(email, password)), {} as any, deps).subscribe(output => {
+      authStart(ActionsObservable.of(actions.start(email, password)), {} as any, deps).subscribe(output => {
         emitedActions.push(output);
         if (output.type === ActionType.SET_LOADING && output.payload.isLoading === false) {
           expect(emitedActions[0]).toEqual(actions.setLoading(true));

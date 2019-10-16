@@ -10,7 +10,7 @@ import { actions as userActions } from '../user/actions';
 import { IAction, IRootState, IEpicDependencies } from '../rootState';
 import { actions, ActionType } from './actions';
 
-export const coreGetEpicSetNavigation: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) =>
+export const setNavigation: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) =>
   action$.pipe(
     ofType(ActionType.SET_NAVIGATION),
     mergeMap(action =>
@@ -22,7 +22,7 @@ export const coreGetEpicSetNavigation: Epic<IAction, IAction, IRootState, IEpicD
     )
   );
 
-export const coreGetEpicErrorHandler: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) =>
+export const errorHandler: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) =>
   action$.pipe(
     ofType(ActionType.EPIC_ERROR),
     mergeMap(action =>
@@ -58,7 +58,7 @@ export const coreGetEpicBootstrap: Epic<IAction, IAction, IRootState, IEpicDepen
     tap(({ payload }) => deps.apiService.setToken(payload.accessToken)),
     /** merge maps emits get current user & first todo list fetch data and isolates an observable branch in case it fails  */
     mergeMap(() =>
-      of(userActions.setListStart([state$.value.auth.currentUserId]), todoActions.setListStart({ page: 1, limit: ENV.PAGINATION.LIMIT })).pipe(
+      of(userActions.fetchListStart([state$.value.auth.currentUserId]), todoActions.fetchListStart({ page: 1, limit: ENV.PAGINATION.LIMIT })).pipe(
         /** side effect to navigate to initial authenticated view and reset the router so the user can't go back to the login */
         tap(() => {
           const resetAction = StackActions.reset({ index: 0, actions: [NavigationActions.navigate({ routeName: ROUTE.TODO_LIST })] });
@@ -70,4 +70,4 @@ export const coreGetEpicBootstrap: Epic<IAction, IAction, IRootState, IEpicDepen
     )
   );
 
-export const epics = [coreGetEpicSetNavigation, coreGetEpicErrorHandler, coreGetEpicCheckForUpdates, coreGetEpicBootstrap];
+export const epics = [setNavigation, errorHandler, coreGetEpicCheckForUpdates, coreGetEpicBootstrap];

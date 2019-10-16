@@ -2,11 +2,12 @@ import { ActionsObservable } from 'redux-observable';
 import { throwError } from 'rxjs';
 
 import { IEpicDependencies } from '../rootState';
-import { todoGetEpicGetTodoList } from './epics';
+import { getTodoList } from './epics';
 import { getDeps } from '../../../test/epicDependencies';
 import { getTodo_1, getInitialState } from '../../../test/entities';
 import { coreState } from '../core';
-import { ActionType, actions } from './actions';
+import { actions } from './actions';
+import { runEpic } from '../../../test/runEpic';
 
 describe('user epics', () => {
   let deps: IEpicDependencies;
@@ -18,27 +19,19 @@ describe('user epics', () => {
     state$ = { value: getInitialState() };
   });
 
-  describe('todoGetEpicGetTodoList', () => {
+  describe('getTodoList', () => {
     const query = { page: 1, limit: 1 };
-    it('should get epic for get user list', done => {
-      const emitedActions = [];
-      todoGetEpicGetTodoList(ActionsObservable.of(actions.setListStart(query)), state$, deps).subscribe(output => {
-        emitedActions.push(output);
-        if (output.type === ActionType.SET_LIST_SUCCESS) {
-          expect(deps.apiService.getTodoList).toBeCalledWith(query);
-          expect(emitedActions[0]).toEqual(actions.setListSuccess([getTodo_1()]));
-          done();
-        }
+    it('get user list', () => {
+      return runEpic(getTodoList(ActionsObservable.of(actions.fetchListStart(query)), state$, deps), actionList => {
+        expect(deps.apiService.getTodoList).toBeCalledWith(query);
+        expect(actionList[0]).toEqual(actions.fetchListSuccess([getTodo_1()]));
       });
     });
 
-    it('should catch errors and dispatch them to the user error handler', done => {
-      const emitedActions = [];
+    it('should catch errors', () => {
       deps.apiService.getTodoList = () => throwError(error);
-      todoGetEpicGetTodoList(ActionsObservable.of(actions.setListStart({ page: 1, limit: 1 })), state$, deps).subscribe(output => {
-        emitedActions.push(output);
-        expect(emitedActions[0]).toEqual(coreState.actions.epicError(error));
-        done();
+      return runEpic(getTodoList(ActionsObservable.of(actions.fetchListStart({ page: 1, limit: 1 })), state$, deps), actionList => {
+        expect(actionList[0]).toEqual(coreState.actions.epicError(error));
       });
     });
   });
